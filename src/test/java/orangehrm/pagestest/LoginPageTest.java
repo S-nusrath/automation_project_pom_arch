@@ -20,7 +20,7 @@ public class LoginPageTest extends BaseTest {
     public void loginTest(String username, String password) {
     	Reporter.log("login test started",true);
         LoginPage loginPage =
-                new LoginPage(DriverFactory.getDriver());
+                new LoginPage();
 
         loginPage.login(username, password);
     }
