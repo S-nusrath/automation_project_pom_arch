@@ -22,7 +22,7 @@ public class BaseTest {
 	@Parameters("browser")
 	@BeforeMethod
 	public void beforeMethod(@org.testng.annotations.Optional("chrome") String browser) {
-		Reporter.log("Browser is opening",+browser,true);
+		Reporter.log(browser,true);
 		try {
 			DriverFactory.initDriver(browser);
 			DriverFactory.getDriver()
