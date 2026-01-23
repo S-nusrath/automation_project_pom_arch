@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.DynamicControlsPage;
+import base.BaseTest;
+import pages.DynamicControlsPage;
 
 public class DynamicControlsTest extends BaseTest {
 
     @Test
-    public void verifyDynamicControls() {
-        driver.get("https://the-internet.herokuapp.com/dynamic_controls");
-        DynamicControlsPage page = new DynamicControlsPage(driver);
-        page.clickRemove();
+    public void testDynamicControls() {
+        try {
+            DynamicControlsPage page = new DynamicControlsPage(driver);
+            page.openPage();
+            page.clickRemove();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

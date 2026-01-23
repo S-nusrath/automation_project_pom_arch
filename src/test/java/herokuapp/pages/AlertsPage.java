@@ -1,24 +1,28 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class AlertsPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public AlertsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//button[text()='Click for JS Alert']")
-    private WebElement alertBtn;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    public void acceptAlert() {
-        alertBtn.click();
-        driver.switchTo().alert().accept();
+    public void handleAlert() {
+        try {
+            driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
+            driver.switchTo().alert().accept();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

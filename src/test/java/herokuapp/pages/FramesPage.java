@@ -1,19 +1,19 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class FramesPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public FramesPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public void switchToFrame() {
-        driver.switchTo().frame(0);
-        driver.switchTo().defaultContent();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/frames");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

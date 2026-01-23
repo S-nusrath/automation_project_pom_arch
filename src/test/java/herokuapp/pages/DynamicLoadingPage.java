@@ -1,18 +1,19 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class DynamicLoadingPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public DynamicLoadingPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public void clickExample() {
-        driver.findElement(org.openqa.selenium.By.linkText("Example 1")).click();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

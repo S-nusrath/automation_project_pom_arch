@@ -1,22 +1,27 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
 
 public class CheckBoxPage {
+    WebDriver driver;
 
     public CheckBoxPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy(xpath="(//input[@type='checkbox'])[1]")
-    private WebElement checkbox;
-
-    public void click() {
-        checkbox.click();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/checkboxes");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public boolean isSelected() {
-        return checkbox.isSelected();
+    public void clickCheckbox() {
+        try {
+            driver.findElement(By.xpath("//input[1]")).click();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

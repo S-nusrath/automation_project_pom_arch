@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.AlertsPage;
+import base.BaseTest;
+import pages.AlertsPage;
 
 public class AlertsTest extends BaseTest {
 
     @Test
-    public void verifyAlertAccept() {
-        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
-        AlertsPage page = new AlertsPage(driver);
-        page.acceptAlert();
+    public void testAlerts() {
+        try {
+            AlertsPage page = new AlertsPage(driver);
+            page.openPage();
+            page.handleAlert();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

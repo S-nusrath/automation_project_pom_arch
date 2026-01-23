@@ -1,10 +1,11 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="HerokuAppSuite">
 
-    <test name="HerokuApp Functional Tests">
-        <classes>
+    <test name="HerokuApp Tests">
+        <parameter name="browser" value="chrome"/>
 
+        <classes>
             <class name="herokuapp.pagestest.ABTestingTest"/>
             <class name="herokuapp.pagestest.AlertsTest"/>
             <class name="herokuapp.pagestest.CheckBoxTest"/>
@@ -15,19 +16,21 @@
             <class name="herokuapp.pagestest.HoverTest"/>
             <class name="herokuapp.pagestest.LoginTest"/>
             <class name="herokuapp.pagestest.TablesTest"/>
-
-            <class name="herokuapp.pagestest.BrokenImagesTest"/>
-            <class name="herokuapp.pagestest.ContextMenuTest"/>
-            <class name="herokuapp.pagestest.DynamicContentTest"/>
-            <class name="herokuapp.pagestest.DynamicControlsTest"/>
-            <class name="herokuapp.pagestest.DynamicLoadingTest"/>
-            <class name="herokuapp.pagestest.FloatingMenuTest"/>
-            <class name="herokuapp.pagestest.InputsTest"/>
-            <class name="herokuapp.pagestest.KeyPressTest"/>
-            <class name="herokuapp.pagestest.MultipleWindowsTest"/>
-            <class name="herokuapp.pagestest.NotificationTest"/>
-
         </classes>
+    </test>
+
+</suite> -->
+
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="HerokuApp Suite">
+
+    <parameter name="browser" value="chrome"/>
+
+    <test name="HerokuApp Tests">
+        <packages>
+            <package name="herokuapp.*"/>
+        </packages>
     </test>
 
 </suite>

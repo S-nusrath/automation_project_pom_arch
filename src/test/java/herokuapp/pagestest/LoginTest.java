@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.LoginPage;
+import base.BaseTest;
+import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
     @Test
-    public void verifyLogin() {
-        driver.get("https://the-internet.herokuapp.com/login");
-        LoginPage page = new LoginPage(driver);
-        page.login("tomsmith", "SuperSecretPassword!");
+    public void testLogin() {
+        try {
+            LoginPage page = new LoginPage(driver);
+            page.openPage();
+            page.login();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

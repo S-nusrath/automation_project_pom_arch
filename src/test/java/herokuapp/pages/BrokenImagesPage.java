@@ -1,18 +1,19 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class BrokenImagesPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public BrokenImagesPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public String getPageTitle() {
-        return driver.getTitle();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/broken_images");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

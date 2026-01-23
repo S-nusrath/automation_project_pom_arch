@@ -1,18 +1,19 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
+import org.openqa.selenium.WebDriver;
 
 public class ABTestingPage {
+    WebDriver driver;
 
     public ABTestingPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy(tagName = "h3")
-    private WebElement heading;
-
-    public String getHeading() {
-        return heading.getText();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/abtest");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

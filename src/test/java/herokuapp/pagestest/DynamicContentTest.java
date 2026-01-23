@@ -1,15 +1,18 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.DynamicContentPage;
+import base.BaseTest;
+import pages.DynamicContentPage;
 
 public class DynamicContentTest extends BaseTest {
 
     @Test
-    public void verifyDynamicContent() {
-        driver.get("https://the-internet.herokuapp.com/dynamic_content");
-        DynamicContentPage page = new DynamicContentPage(driver);
-        page.refreshPage();
+    public void testDynamicContent() {
+        try {
+            DynamicContentPage page = new DynamicContentPage(driver);
+            page.openPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

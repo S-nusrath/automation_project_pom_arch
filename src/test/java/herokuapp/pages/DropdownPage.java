@@ -1,23 +1,29 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.Select;
 
 public class DropdownPage {
+    WebDriver driver;
 
     public DropdownPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy(id="dropdown")
-    private WebElement dropdown;
-
-    public void select(String value) {
-        new Select(dropdown).selectByVisibleText(value);
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/dropdown");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public String getSelected() {
-        return new Select(dropdown).getFirstSelectedOption().getText();
+    public void selectOption() {
+        try {
+            Select s = new Select(driver.findElement(By.id("dropdown")));
+            s.selectByIndex(1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

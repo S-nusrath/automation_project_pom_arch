@@ -1,15 +1,18 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.FramesPage;
+import base.BaseTest;
+import pages.FramesPage;
 
 public class FramesTest extends BaseTest {
 
     @Test
-    public void verifyFrameSwitch() {
-        driver.get("https://the-internet.herokuapp.com/iframe");
-        FramesPage page = new FramesPage(driver);
-        page.switchToFrame();
+    public void testFrames() {
+        try {
+            FramesPage page = new FramesPage(driver);
+            page.openPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

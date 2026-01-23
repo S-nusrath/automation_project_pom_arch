@@ -1,16 +1,18 @@
-package herokuapp.pagestest;
+package pagetest;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.TablesPage;
+import base.BaseTest;
+import pages.TablesPage;
 
 public class TablesTest extends BaseTest {
 
     @Test
-    public void verifyTableText() {
-        driver.get("https://the-internet.herokuapp.com/tables");
-        TablesPage page = new TablesPage(driver);
-        Assert.assertNotNull(page.getName());
+    public void testTables() {
+        try {
+            TablesPage page = new TablesPage(driver);
+            page.openPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

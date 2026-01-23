@@ -1,28 +1,30 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class DragAndDropPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public DragAndDropPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "column-a")
-    private WebElement source;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/drag_and_drop");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    @FindBy(id = "column-b")
-    private WebElement target;
-
-    public void dragAndDrop() {
-        Actions act = new Actions(driver);
-        act.dragAndDrop(source, target).perform();
+    public void drag() {
+        try {
+            WebElement a = driver.findElement(By.id("column-a"));
+            WebElement b = driver.findElement(By.id("column-b"));
+            new Actions(driver).dragAndDrop(a, b).perform();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

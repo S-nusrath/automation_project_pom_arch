@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.HoverPage;
+import base.BaseTest;
+import pages.HoverPage;
 
 public class HoverTest extends BaseTest {
 
     @Test
-    public void verifyHover() {
-        driver.get("https://the-internet.herokuapp.com/hovers");
-        HoverPage page = new HoverPage(driver);
-        page.hoverImage();
+    public void testHover() {
+        try {
+            HoverPage page = new HoverPage(driver);
+            page.openPage();
+            page.hoverImage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

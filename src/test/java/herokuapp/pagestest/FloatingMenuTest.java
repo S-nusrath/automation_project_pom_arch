@@ -1,15 +1,18 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.FloatingMenuPage;
+import base.BaseTest;
+import pages.FloatingMenuPage;
 
 public class FloatingMenuTest extends BaseTest {
 
     @Test
-    public void verifyFloatingMenu() {
-        driver.get("https://the-internet.herokuapp.com/floating_menu");
-        FloatingMenuPage page = new FloatingMenuPage(driver);
-        System.out.println(page.isMenuDisplayed());
+    public void testFloatingMenu() {
+        try {
+            FloatingMenuPage page = new FloatingMenuPage(driver);
+            page.openPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

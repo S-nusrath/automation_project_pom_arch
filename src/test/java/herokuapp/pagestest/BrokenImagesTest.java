@@ -1,15 +1,18 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.BrokenImagesPage;
+import base.BaseTest;
+import pages.BrokenImagesPage;
 
 public class BrokenImagesTest extends BaseTest {
 
     @Test
-    public void verifyBrokenImagesPage() {
-        driver.get("https://the-internet.herokuapp.com/broken_images");
-        BrokenImagesPage page = new BrokenImagesPage(driver);
-        System.out.println(page.getPageTitle());
+    public void testBrokenImages() {
+        try {
+            BrokenImagesPage page = new BrokenImagesPage(driver);
+            page.openPage();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

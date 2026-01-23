@@ -1,20 +1,19 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class TablesPage {
+    WebDriver driver;
 
     public TablesPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy(xpath = "//table[@id='table1']//tr[2]/td[1]")
-    private WebElement firstName;
-
-    public String getName() {
-        return firstName.getText();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/tables");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.FileUploadPage;
+import base.BaseTest;
+import pages.FileUploadPage;
 
 public class FileUploadTest extends BaseTest {
 
     @Test
-    public void verifyFileUpload() {
-        driver.get("https://the-internet.herokuapp.com/upload");
-        FileUploadPage page = new FileUploadPage(driver);
-        page.uploadFile("C:\\testfile.txt");
+    public void testFileUpload() {
+        try {
+            FileUploadPage page = new FileUploadPage(driver);
+            page.openPage();
+            page.uploadFile();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

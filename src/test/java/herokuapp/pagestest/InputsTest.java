@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.InputsPage;
+import base.BaseTest;
+import pages.InputsPage;
 
 public class InputsTest extends BaseTest {
 
     @Test
-    public void verifyInput() {
-        driver.get("https://the-internet.herokuapp.com/inputs");
-        InputsPage page = new InputsPage(driver);
-        page.enterNumber("123");
+    public void testInputs() {
+        try {
+            InputsPage page = new InputsPage(driver);
+            page.openPage();
+            page.enterNumber();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

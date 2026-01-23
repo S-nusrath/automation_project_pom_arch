@@ -1,19 +1,27 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class KeyPressPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public KeyPressPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+    }
+
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/key_presses");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void pressKey() {
-        driver.findElement(org.openqa.selenium.By.id("target")).sendKeys(Keys.ENTER);
+        try {
+            driver.findElement(By.id("target")).sendKeys(Keys.ENTER);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

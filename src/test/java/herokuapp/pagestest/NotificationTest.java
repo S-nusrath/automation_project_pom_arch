@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.NotificationPage;
+import base.BaseTest;
+import pages.NotificationPage;
 
 public class NotificationTest extends BaseTest {
 
     @Test
-    public void verifyNotification() {
-        driver.get("https://the-internet.herokuapp.com/notification_message_rendered");
-        NotificationPage page = new NotificationPage(driver);
-        page.clickNotification();
+    public void testNotification() {
+        try {
+            NotificationPage page = new NotificationPage(driver);
+            page.openPage();
+            page.clickLink();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

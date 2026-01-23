@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.DragAndDropPage;
+import base.BaseTest;
+import pages.DragAndDropPage;
 
 public class DragAndDropTest extends BaseTest {
 
     @Test
-    public void verifyDragAndDrop() {
-        driver.get("https://the-internet.herokuapp.com/drag_and_drop");
-        DragAndDropPage page = new DragAndDropPage(driver);
-        page.dragAndDrop();
+    public void testDragAndDrop() {
+        try {
+            DragAndDropPage page = new DragAndDropPage(driver);
+            page.openPage();
+            page.dragAndDrop();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

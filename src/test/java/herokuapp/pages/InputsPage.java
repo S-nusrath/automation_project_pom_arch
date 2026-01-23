@@ -1,23 +1,27 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class InputsPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public InputsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(tagName = "input")
-    private WebElement input;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/inputs");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    public void enterNumber(String value) {
-        input.sendKeys(value);
+    public void enterNumber() {
+        try {
+            driver.findElement(By.tagName("input")).sendKeys("123");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

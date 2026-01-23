@@ -1,24 +1,29 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HoverPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public HoverPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "figure")
-    private WebElement image;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/hovers");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void hoverImage() {
-        new Actions(driver).moveToElement(image).perform();
+        try {
+            WebElement img = driver.findElement(By.className("figure"));
+            new Actions(driver).moveToElement(img).perform();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

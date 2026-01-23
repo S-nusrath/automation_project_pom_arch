@@ -1,18 +1,19 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class FloatingMenuPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public FloatingMenuPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public boolean isMenuDisplayed() {
-        return driver.findElement(org.openqa.selenium.By.id("menu")).isDisplayed();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/floating_menu");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -1,26 +1,31 @@
-package herokuapp.utility;
+package utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static WebDriver driver;
 
-    public static void initDriver(String browser) {
-        if (browser.equalsIgnoreCase("chrome")) {
-            driver.set(new ChromeDriver());
+    public static WebDriver initDriver() {
+        try {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+        } catch (Exception e) {
+            System.out.println("Driver error: " + e.getMessage());
         }
+        return driver;
     }
 
     public static WebDriver getDriver() {
-        return driver.get();
+        return driver;
     }
 
     public static void quitDriver() {
-        if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove();
+        if (driver != null) {
+            driver.quit();
         }
     }
 }

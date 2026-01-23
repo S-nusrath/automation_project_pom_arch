@@ -1,27 +1,29 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class FileUploadPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public FileUploadPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "file-upload")
-    private WebElement chooseFile;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/upload");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    @FindBy(id = "file-submit")
-    private WebElement uploadBtn;
-
-    public void uploadFile(String path) {
-        chooseFile.sendKeys(path);
-        uploadBtn.click();
+    public void uploadFile() {
+        try {
+            driver.findElement(By.id("file-upload"))
+                  .sendKeys("C:\\testfile.txt");
+            driver.findElement(By.id("file-submit")).click();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

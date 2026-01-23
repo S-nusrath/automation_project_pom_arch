@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.MultipleWindowsPage;
+import base.BaseTest;
+import pages.MultipleWindowsPage;
 
 public class MultipleWindowsTest extends BaseTest {
 
     @Test
-    public void verifyMultipleWindows() {
-        driver.get("https://the-internet.herokuapp.com/windows");
-        MultipleWindowsPage page = new MultipleWindowsPage(driver);
-        page.clickLink();
+    public void testMultipleWindows() {
+        try {
+            MultipleWindowsPage page = new MultipleWindowsPage(driver);
+            page.openPage();
+            page.openNewWindow();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

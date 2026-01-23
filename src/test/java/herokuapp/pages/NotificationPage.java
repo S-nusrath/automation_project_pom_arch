@@ -1,18 +1,27 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class NotificationPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public NotificationPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public void clickNotification() {
-        driver.findElement(org.openqa.selenium.By.linkText("Click here")).click();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/notification_message_rendered");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void clickLink() {
+        try {
+            driver.findElement(By.linkText("Click here")).click();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

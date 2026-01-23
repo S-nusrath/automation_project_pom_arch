@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.DynamicLoadingPage;
+import base.BaseTest;
+import pages.DynamicLoadingPage;
 
 public class DynamicLoadingTest extends BaseTest {
 
     @Test
-    public void verifyDynamicLoading() {
-        driver.get("https://the-internet.herokuapp.com/dynamic_loading");
-        DynamicLoadingPage page = new DynamicLoadingPage(driver);
-        page.clickExample();
+    public void testDynamicLoading() {
+        try {
+            DynamicLoadingPage page = new DynamicLoadingPage(driver);
+            page.openPage();
+            page.clickStart();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

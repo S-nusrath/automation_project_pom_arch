@@ -1,18 +1,19 @@
-package herokuapp.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class DynamicContentPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public DynamicContentPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public void refreshPage() {
-        driver.navigate().refresh();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/dynamic_content");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

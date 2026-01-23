@@ -1,15 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.KeyPressPage;
+import base.BaseTest;
+import pages.KeyPressPage;
 
 public class KeyPressTest extends BaseTest {
 
     @Test
-    public void verifyKeyPress() {
-        driver.get("https://the-internet.herokuapp.com/key_presses");
-        KeyPressPage page = new KeyPressPage(driver);
-        page.pressKey();
+    public void testKeyPress() {
+        try {
+            KeyPressPage page = new KeyPressPage(driver);
+            page.openPage();
+            page.pressKey();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

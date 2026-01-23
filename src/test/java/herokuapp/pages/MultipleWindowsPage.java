@@ -1,18 +1,27 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class MultipleWindowsPage {
-
-    private WebDriver driver;
+    WebDriver driver;
 
     public MultipleWindowsPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    public void clickLink() {
-        driver.findElement(org.openqa.selenium.By.linkText("Click Here")).click();
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/windows");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void openNewWindow() {
+        try {
+            driver.findElement(By.linkText("Click Here")).click();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

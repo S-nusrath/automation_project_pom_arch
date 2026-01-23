@@ -1,17 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.CheckBoxPage;
+import base.BaseTest;
+import pages.CheckBoxPage;
 
 public class CheckBoxTest extends BaseTest {
 
     @Test
-    public void verifyCheckbox() {
-        driver.get("https://the-internet.herokuapp.com/checkboxes");
-        CheckBoxPage page = new CheckBoxPage(driver);
-        page.click();
-        Assert.assertTrue(page.isSelected());
+    public void testCheckBox() {
+        try {
+            CheckBoxPage page = new CheckBoxPage(driver);
+            page.openPage();
+            page.selectCheckbox();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

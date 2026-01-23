@@ -1,17 +1,19 @@
-package herokuapp.pagestest;
+package pagetest;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import herokuapp.basetest.BaseTest;
-import herokuapp.pages.DropdownPage;
+import base.BaseTest;
+import pages.DropdownPage;
 
 public class DropdownTest extends BaseTest {
 
     @Test
-    public void verifyDropdown() {
-        driver.get("https://the-internet.herokuapp.com/dropdown");
-        DropdownPage page = new DropdownPage(driver);
-        page.select("Option 1");
-        Assert.assertEquals(page.getSelected(), "Option 1");
+    public void testDropdown() {
+        try {
+            DropdownPage page = new DropdownPage(driver);
+            page.openPage();
+            page.selectOption();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

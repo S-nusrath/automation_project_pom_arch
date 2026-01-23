@@ -1,28 +1,29 @@
-package herokuapp.pages;
+package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.*;
 
 public class LoginPage {
+    WebDriver driver;
 
     public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
-    @FindBy(id = "username")
-    private WebElement username;
+    public void openPage() {
+        try {
+            driver.get("https://the-internet.herokuapp.com/login");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-    @FindBy(id = "password")
-    private WebElement password;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    private WebElement loginBtn;
-
-    public void login(String user, String pass) {
-        username.sendKeys(user);
-        password.sendKeys(pass);
-        loginBtn.click();
+    public void login() {
+        try {
+            driver.findElement(By.id("username")).sendKeys("tomsmith");
+            driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+            driver.findElement(By.cssSelector("button")).click();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
